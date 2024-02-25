@@ -2,6 +2,7 @@ import os
 import telebot
 from dotenv import load_dotenv
 from telebot import types
+from models.on_duty_buttons import get_current_shift
 
 load_dotenv()  # load env variables from .env file
 
@@ -37,7 +38,7 @@ def get_user_text(msg):
     Handles user messages
     """
     if msg.text == "Кто на смене?":
-        bot.send_message(msg.chat.id, "get_current_shift()", parse_mode="html")
+        bot.send_message(msg.chat.id, get_current_shift(), parse_mode="html")
     elif msg.text == "Кто был на смене?":
         bot.send_message(msg.chat.id, "get_previous_shift()", parse_mode="html")
     elif msg.text == "Кто будет на смене?":
